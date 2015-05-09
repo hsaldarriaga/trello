@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+  <input id="task_user_id" name="task[user_id]" type="hidden" value="<%= current_user.user_id %>" />
+  
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -25,7 +23,16 @@
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.time_select :duration %>
+    <input id="task_duration_1i" name="task[duration(1i)]" type="hidden" value="<%= Date.current.year %>" />
+    <input id="task_duration_2i" name="task[duration(2i)]" type="hidden" value="<%= Date.current.month %>" />
+    <input id="task_duration_3i" name="task[duration(3i)]" type="hidden" value="<%= Date.current.day %>" />
+    <ul class="inline-list"> 
+      <li>Hours</li>
+      <li><input id="task_duration_4i" name="task[duration(4i)]"></li> 
+      <li>:</li>
+      <li>Minutes</li>
+      <li><input id="task_duration_5i" name="task[duration(5i)]"></li> 
+    </ul>
   </div>
   <div class="field">
     <%= f.label :startdate %><br>
@@ -37,7 +44,7 @@
   </div>
   <div class="field">
     <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <input id="task_author" name="task[author]" type="text" value="<%= current_user.name+" "+current_user.lastname %>"/>
   </div>
   <div class="field">
     <%= f.label :checked %><br>

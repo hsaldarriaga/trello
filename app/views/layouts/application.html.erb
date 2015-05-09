@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Trello" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,7 +12,40 @@
   </head>
 
   <body>
-
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to 'Listening Tasks', tasks_path %></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+    
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active">
+            <% if user_signed_in? %>
+              <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to 'Log in', new_user_session_path %>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="has-dropdown">
+              <a href="#">User Configuration</a>
+              <ul class="dropdown">
+                <li><%= link_to 'Edit User', edit_user_registration_path %></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+    
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><%= link_to 'Team Members', users_path %></li>
+        </ul>
+      </section>
+    </nav>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
