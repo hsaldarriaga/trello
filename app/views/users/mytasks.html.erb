@@ -1,7 +1,8 @@
 <h1>My Tasks</h1>
-
+<% if user_signed_in? %>
 <div class="row">
 	<div class="small-4 large-4 columns">
+		<h4>Task created by me</h4>
 		<table>
 			<thead>
 				<tr>
@@ -10,19 +11,16 @@
 			</thead>
 			<tbody>
 				<% @my_tasks.each do |task| %>
-					<td><%= task.name %></td>
-					<td><%= link_to I18n.t('Show'), task %></td>
-		            <% if user_signed_in? %>
-		              <% if current_user.user_id == task.user_id %>
-		                <td><%= link_to I18n.t('Edit'), edit_task_path(task) %></td>
-		                <td><%= link_to I18n.t('Destroy'), task, method: :delete, data: { confirm: I18n.t('Are you sure?') } %></td>
-		              <% end %>
-		            <% end %>
+					<tr>
+						<td><%= task.title %></td>
+						<td><%= link_to 'Show', task %></td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
 	<div class="small-4 large-4 columns">
+		<h4>Task where I am responsible</h4>
 		<table>
 			<thead>
 				<tr>
@@ -31,10 +29,15 @@
 			</thead>
 			<tbody>
 				<% @my_responsible_tasks.each do |task| %>
-					<td><%= task.name %></td>
-					<td><%= link_to I18n.t('Show'), task %></td>
+					<tr>
+						<td><%= task.title %></td>
+						<td><%= link_to 'Show', task %></td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
 </div>
+<% else %>
+	<h1>You need to authenticate first</h1>
+<% end %>

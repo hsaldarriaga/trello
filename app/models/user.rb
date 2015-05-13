@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   validates :lastname, presence: true
   validates :username, presence: true, uniqueness: true
   validates :user_id, presence: true, uniqueness: true
+
+  def fullname
+    "#{name} #{lastname}"
+  end
 end

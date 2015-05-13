@@ -32,18 +32,21 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @task.author %>
+  <%= @task.user.fullname %>
 </p>
 
 <p>
   <strong>Responsible:</strong>
-  <%= @task.responsible_id %>
+  <%= User.where(user_id: @task.responsible_id).take.fullname %>
 </p>
 
 <p>
   <strong>Checked:</strong>
   <%= @task.checked %>
 </p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<% if user_signed_in? %>
+  <% if current_user.user_id == @task.user_id %>
+    <%= link_to 'Edit', edit_task_path(@task) %> | 
+  <% end %>
+<% end %>
 <%= link_to 'Back', tasks_path %>

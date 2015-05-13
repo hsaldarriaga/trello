@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/mytasks' => 'users#mytasks', as: 'user_mytasks'
   devise_for :users
   resources :tasks
-  get 'users/mytasks/:id' => 'users#mytasks', as: 'user_mytasks'
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

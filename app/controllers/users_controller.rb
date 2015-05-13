@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:mytasks, :show, :edit, :update, :destroy]
-  before_action :authenticate_user, only: [:edit, :update, :destroy, :mytasks]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
   respond_to :html
 
   def index
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   end
   
   def mytasks
-    @my_tasks = User.where(author: current_user.user_id)
-    @my_responsible_tasks = User.where(responsible_id: current_user.user_id)
+    @my_tasks = Task.where(author: current_user.user_id)
+    @my_responsible_tasks = Task.where(responsible_id: current_user.user_id)
   end
 
   def new

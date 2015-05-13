@@ -14,35 +14,32 @@
   <input id="task_user_id" name="task[user_id]" type="hidden" value="<%= current_user.user_id %>" />
   
   <div class="field">
-    <%= f.label :title, :title  + " *" %><br>
+    <%= f.label :title, 'title'  + " *" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description, :description  + " *" %><br>
+    <%= f.label :description, 'description' %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :duration, :duration  + " *" %><br>
+    <%= f.label :duration, 'duration'  + " *" %><br>
     <%= f.number_field :duration %>
   </div>
   <div class="field">
-    <%= f.label :startdate, :startdate  + " *" %><br>
+    <%= f.label :startdate, 'startdate'  + " *" %><br>
     <%= f.date_select :startdate %>
   </div>
   <div class="field">
-    <%= f.label :deadline, :deadline  + " *" %><br>
+    <%= f.label :deadline, 'deadline'  + " *" %><br>
     <%= f.date_select :deadline %>
   </div>
+  <input id="task_author" name="task[author]" type="hidden" value="<%= current_user.user_id %>" />
   <div class="field">
-    <%= f.label :author, :author  + " *" %><br>
-    <input id="task_author" name="task[author]" type="hidden" value="<%= current_user.user_id %>" />
+    <%= f.label :responsible_id, 'responsible_id' + " *" %><br>
+    <%= f.collection_select(:responsible_id, User.all, :user_id, :fullname, prompt: true) %>
   </div>
   <div class="field">
-    <%= f.label :responsible_id, :responsible_id + " *" %><br>
-    <%= f.collection_select(:responsible_id, User.all, :user_id, :name + " " + :lastname) %>
-  </div>
-  <div class="field">
-    <%= f.label :checked, :checked  + " *" %><br>
+    <%= f.label :checked, 'checked'  + " *" %><br>
     <%= f.check_box :checked %>
   </div>
   <div class="actions">
