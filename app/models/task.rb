@@ -7,4 +7,10 @@ class Task < ActiveRecord::Base
 	validates :startdate, presence: true
 	validates :deadline, presence: true
 	validates :author, presence: true
+	validates :responsible_id, presence: true
+	validate :correct_date
+
+	def correct_date
+		errors.add(:deadline, "StartDate is greater than Deadline") if startdate > deadline
+	end
 end

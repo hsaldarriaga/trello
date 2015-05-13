@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'foundation-rails', '~> 5.4.1.0'
 gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
-gem 'obfuscate_id', '~> 0.1.0'
+#gem 'obfuscate_id', '~> 0.1.0'
 #gem 'i18n', '~> 0.7.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

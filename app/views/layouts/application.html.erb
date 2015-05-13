@@ -32,9 +32,10 @@
           </li>
           <% if user_signed_in? %>
             <li class="has-dropdown">
-              <a href="#">User Configuration</a>
+              <a href="#"><%= t('User Configuration') %></a>
               <ul class="dropdown">
                 <li><%= link_to I18n.t('Edit User'), edit_user_registration_path %></li>
+                <li><%= link_to I18n.t('My Tasks'), user_mytasks_path(current_user.id) %></li>
               </ul>
             </li>
           <% end %>
