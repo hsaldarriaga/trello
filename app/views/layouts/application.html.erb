@@ -45,8 +45,8 @@
         <ul class="left">
           <li><%= link_to 'Team Members', users_path %></li>
           <% if user_signed_in? %>
-            <li><%= image_tag current_user.avatar.url(:thumb), size: "40x40" %></li>
-            <li><%= link_to current_user.name, user_path(current_user) %></li>
+            <li><%= link_to (image_tag current_user.avatar.url(:thumb), size: "20x20"), user_path(current_user) %></li>
+            <li><%= link_to current_user.name, edit_user_registration_path %></li>
           <% end %>
         </ul>
       </section>
